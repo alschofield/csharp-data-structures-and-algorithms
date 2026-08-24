@@ -9,13 +9,13 @@ Create test source only under `tests/`; expected initial compile failures are co
 | queue | FIFO, wraparound, empty access, growth |
 | singly-linked-list | end cases, indexes, final-node removal |
 | doubly-linked-list | reciprocal links, both ends, nearer-end indexes |
-| separate-chaining | collisions, replacement, fixed ten buckets |
-| resizable-separate-chaining | collisions, 0.75 resize, rehash, no shrink |
+| separate-chaining | collisions, replacement, explicit nonzero initial capacity, fixed-capacity and resizing set policies, capacity getter, 0.75 resize and rehash, no automatic shrink |
 | binary-search-tree | duplicates, every removal shape, in-order |
 | binary-heap | heap ordering, empty access, equal priorities |
 | prefix-trie | duplicate keys, prefixes, pruning removal |
-| adjacency-list | directedness, invalid vertices, deterministic neighbors |
-| adjacency-matrix | symmetric updates, no-op edge changes, row scan |
+| graph-view | dynamic vertex count, invalid index rejection, weighted neighbor-index delivery, live adjacency-list/matrix/imported-graph adapters |
+| adjacency-list | empty directed/undirected creation, unique dynamic caller-valued nodes with stable dense indexes, handle-based weighted edges, foreign-handle rejection, deterministic neighbors, live index-based GraphView adapter, amortized O(1) node addition |
+| adjacency-matrix | empty directed/undirected creation, unique dynamic caller-valued nodes with stable dense indexes, handle-based symmetric weighted edges, foreign-handle rejection, no-op edge changes, weighted row scan, live index-based GraphView adapter, O(N^2) node addition |
 | union-find | compression, rank, redundant union, set count |
 | linear-search | unsorted input, first duplicate, absent/empty input |
 | binary-search | boundaries, duplicates, absent/empty sorted input |
@@ -27,7 +27,7 @@ Create test source only under `tests/`; expected initial compile failures are co
 | heap-sort | bottom-up heapify and unstable equal values |
 | counting-sort | bounded keys, stability, invalid key preservation |
 | radix-sort | stable LSD passes and equal values |
-| breadth-first-search | levels, cycles, disconnected vertices, invalid source |
-| depth-first-search | branch order, cycles, disconnected vertices, invalid source |
-| dijkstra | shortest paths, infinity, stale entries, negative rejection |
-| a-star | admissible path, zero heuristic equivalence, no path, tie order |
+| breadth-first-search | dynamic GraphView and index source, levels, ignored weights, cycles, disconnected vertices, invalid source rejection |
+| depth-first-search | dynamic GraphView and index source, branch order, ignored weights, cycles, disconnected vertices, invalid source rejection |
+| dijkstra | dynamic GraphView and index source, weighted shortest paths keyed by index, infinity, stale entries, negative rejection, invalid source rejection |
+| a-star | dynamic GraphView and index endpoints, weighted admissible index path, zero heuristic equivalence, no path, tie order, invalid endpoint rejection |
