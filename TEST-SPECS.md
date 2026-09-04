@@ -4,7 +4,6 @@ Create test source only under `tests/`; expected initial compile failures are co
 
 | Topic | Required test behavior |
 | --- | --- |
-| dynamic-array | bounds, null values, replacement/removal, geometric growth |
 | stack | LIFO, empty access, null values, growth |
 | queue | FIFO, wraparound, empty access, growth |
 | singly-linked-list | end cases, indexes, final-node removal |
