@@ -1,9 +1,17 @@
 # Prefix Trie
-## How It Works
 Character paths share prefixes and end flags distinguish stored keys.
-## Required API
+
+## API
 `PrefixTrie`: `Insert(string)`, `Contains(string)`, `StartsWith(string)`, `Remove(string)`, `Count`.
+
 ## Contract
-Duplicate insertion is idempotent; empty string is a valid prefix; removal prunes only dead paths and absent removal changes nothing.
-## Complexity Targets
+- Keys are strings; null-key behavior is not an alternate API and must fail rather than be treated as a key.
+- Duplicate insertion is idempotent and does not increment `Count`.
+- The empty string is a valid prefix.
+- Removing an existing key mutates only the nodes no longer needed by another key or prefix. Removing an absent key changes nothing.
+
+## Complexity
 All operations O(m), independent of key count; O(total stored characters) worst-case space.
+
+## Verification
+Exercise duplicate keys, prefixes, and removal pruning.

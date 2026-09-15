@@ -1,9 +1,17 @@
 # Breadth-First Search
-## How It Works
 A FIFO frontier completes each distance layer before the next.
-## Required API
+
+## API
 `BreadthFirstSearch.Traverse(GraphView graph, int source)` returns index visit order.
+
 ## Contract
-Mark on enqueue; visit each reachable vertex once; ignore edge weights; reject a source index outside the view; support vertices added before traversal, cycles, self-loops, and disconnected graphs without graph mutation; distances are minimum hops.
-## Complexity Targets
+- `graph` is a non-null `GraphView`; `source` must be in its indexed range or traversal fails before mutation.
+- Mark vertices on enqueue and visit each reachable index once. Edge weights are read only as graph data and do not affect traversal order.
+- The result order is index-based, including vertices added before traversal. Cycles, self-loops, and disconnected vertices are handled without graph mutation.
+- The traversal level of each reached vertex is its minimum hop distance. Queue indexes and level counters must not overflow.
+
+## Complexity
 O(V+E) time and O(V) space for a `GraphView` whose weighted-neighbor iteration totals O(E).
+
+## Verification
+Exercise a dynamic `GraphView`, index source, levels, ignored weights, cycles, disconnected vertices, and invalid-source rejection.

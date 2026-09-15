@@ -1,9 +1,17 @@
 # Singly Linked List
-## How It Works
 Nodes carry one forward link and the list retains only its head.
-## Required API
+
+## API
 `SinglyLinkedList<T>`: `PushFront`, `PushBack`, `PopFront`, `PopBack`, `Get`, `Insert`, `Remove`, `Count`, `IsEmpty`.
+
 ## Contract
-Null values are valid; indexes are `[0,Count)` and insert accepts Count; failures preserve state; final removal restores empty state.
-## Complexity Targets
+- `T` is unconstrained; null reference values are valid list values.
+- `Get` and `Remove` accept indexes in `[0, Count)`; `Insert` also accepts `Count`.
+- Invalid access or mutation fails without changing the list.
+- The final removal restores a valid empty state; no operation depends on a tail reference.
+
+## Complexity
 Front operations/metadata O(1); other operations O(n); O(n) node space.
+
+## Verification
+Exercise both ends, index boundaries, and removing the final node.

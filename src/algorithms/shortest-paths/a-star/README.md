@@ -1,9 +1,17 @@
 # A-Star
-## How It Works
 A min-priority frontier orders candidates by `g + h` toward a goal.
-## Required API
+
+## API
 `AStar.FindPath(GraphView graph, int source, int goal, Func<int,ulong> heuristic)` returns an optional index path.
+
 ## Contract
-Read edge weights and neighbor indexes from `GraphView`; require non-negative weights and source and goal indexes inside the view; admissible heuristics yield optimal paths; zero heuristic exactly degenerates to Dijkstra; ties are deterministic; unreachable goals explicitly report no path.
-## Complexity Targets
+- `graph` and `heuristic` are non-null; `source` and `goal` must be valid graph indexes. Invalid endpoints and negative edge weights are rejected.
+- Read indexed neighbors and weights from `GraphView` without mutation. A non-negative `ulong` heuristic is evaluated by vertex index.
+- With an admissible heuristic, return an optimal index path. A zero heuristic has Dijkstra-equivalent results.
+- Frontier ties are deterministic; an unreachable goal explicitly returns no path. `g + h` and path-cost arithmetic must detect overflow rather than wrap.
+
+## Complexity
 Worst O((V+E) log V), O(V) auxiliary space.
+
+## Verification
+Exercise a dynamic `GraphView`, admissible weighted index paths, zero-heuristic equivalence, no path, deterministic ties, and invalid-endpoint rejection.
