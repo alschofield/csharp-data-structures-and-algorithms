@@ -1,9 +1,29 @@
 # Data Structures and Algorithms in C#
 
-The `src/` taxonomy mirrors the canonical C curriculum's 26 applicable leaves. Each carries a contract README; `TEST-SPECS.md` provides generated xUnit targets for every leaf. No production C# source is supplied.
+## Purpose and Status
 
-`List<T>` is the native dynamic-sequence baseline and is not a separate curriculum exercise. It may be used where a topic needs contiguous backing storage.
+A language-specific, from-first-principles data-structures-and-algorithms learning curriculum.
+Target-scaffold repository. Production C# source is intentionally learner-owned.
 
-## Verification
+## Curriculum Coverage
 
-`dotnet test` becomes meaningful after test files and user-owned production APIs are introduced. Implement each learning target directly: do not substitute BCL collections, search helpers, or sorting helpers except for `List<T>` as the allowed native dynamic-sequence baseline.
+26 applicable topic leaves. Matching xUnit targets are documented in `TEST-SPECS.md`.
+
+## Commands
+
+```sh
+dotnet test
+```
+
+## Conventions
+
+`List<T>` is the allowed native dynamic-sequence baseline when contiguous dynamic storage is needed.
+Implement learning targets directly; do not delegate to BCL collections, search helpers, sorting helpers, or priority queues.
+
+## Documentation Contract Template
+
+Each topic leaf README uses these sections: `Implementation Status`, `How It Works`, `Required API`, `Contract`, `Complexity Targets`, and `Verification`. The leaf README is authoritative for that topic; source and tests must preserve its language-specific API syntax and stated behavior.
+
+## Repository-Specific Notes
+
+Production implementations are learner-owned. Documentation and verification scaffolding may describe the required work but do not substitute for it.
